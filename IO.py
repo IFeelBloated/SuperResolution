@@ -1,7 +1,7 @@
 import numpy
 
 def LoadRawBinaryGrayscaleSequence(Address, Width, Height, Length, PixelType='float32'):
-    Sequence = numpy.memmap(Address, dtype=PixelType, mode='r', shape=(Width, Height, Length))
+    Sequence = numpy.memmap(Address, dtype=PixelType, mode='r', shape=(Length, Height, Width))
     Sequence = numpy.array(Sequence, dtype='float64')
     return Sequence
 
