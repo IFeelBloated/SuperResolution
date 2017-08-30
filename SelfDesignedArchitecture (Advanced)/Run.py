@@ -3,8 +3,8 @@ import PatternManipulator
 import keras
 import numpy
 
-PatternSize = 97
-Margin = PatternManipulator.GetMargin([3,3,3,3,3,3,3,3,1,1,1,1,9])
+PatternSize = 159
+Margin = PatternManipulator.GetMargin([3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,9])
 
 def ReconstructGrayscaleSequence(HiFreqSequence, BaseSequence, PatternSize, Margin):
     FrameCount = BaseSequence.shape[0]

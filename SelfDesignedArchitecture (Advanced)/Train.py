@@ -2,8 +2,8 @@ import IO
 import PatternManipulator
 import Model
 
-PatternSize = 97
-Margin = PatternManipulator.GetMargin([3,3,3,3,3,3,3,3,1,1,1,1,9])
+PatternSize = 159
+Margin = PatternManipulator.GetMargin([3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,9])
 Step = 12
 
 HiFreq = IO.LoadRawBinaryGrayscaleSequence('HiFreq.bin', 512, 512, 1)
