@@ -25,7 +25,9 @@ def GetBlockA():
     Conv1 = VGGConv(HiFreqGuess, 64, 'AE1')
     Conv1 = VGGConv(Conv1, 64, 'AE2')
 
-    Map1 = VGGConv(layers.convolutional.Cropping2D(28)(Conv1), 64, 'AD2')
+    Approx = VGGConv(Conv1, 128, 'Approx_BLKA')
+
+    Map1 = VGGConv(layers.convolutional.Cropping2D(27)(Approx), 64, 'AD2')
     Map1 = VGGConv(Map1, 64, 'AD1', layers.convolutional.Cropping2D(30)(Conv1))
 
     Ensemble = layers.Conv2D(1, (9, 9), activation=None, use_bias=False, padding='valid', name='Ensemble')(Map1)
@@ -45,7 +47,9 @@ def GetBlockB():
     Conv2 = VGGConv(Conv1, 128, 'BE1')
     Conv2 = VGGConv(Conv2, 128, 'BE2')
 
-    Map2 = VGGConv(layers.convolutional.Cropping2D(24)(Conv2), 128, 'BD2')
+    Approx = VGGConv(Conv2, 256, 'Approx_BLKB')
+
+    Map2 = VGGConv(layers.convolutional.Cropping2D(23)(Approx), 128, 'BD2')
     Map2 = VGGConv(Map2, 128, 'BD1', layers.convolutional.Cropping2D(26)(Conv2))
 
     Map1 = VGGConvFixed(Map2, 64, 'AD2')
@@ -74,7 +78,9 @@ def GetBlockC():
     Conv3 = VGGConv(Conv3, 256, 'CE3')
     Conv3 = VGGConv(Conv3, 256, 'CE4')
 
-    Map3 = VGGConv(layers.convolutional.Cropping2D(16)(Conv3), 256, 'CD4')
+    Approx = VGGConv(Conv3, 512, 'Approx_BLKC')
+
+    Map3 = VGGConv(layers.convolutional.Cropping2D(15)(Approx), 256, 'CD4')
     Map3 = VGGConv(Map3, 256, 'CD3')
     Map3 = VGGConv(Map3, 256, 'CD2')
     Map3 = VGGConv(Map3, 256, 'CD1', layers.convolutional.Cropping2D(20)(Conv3))
@@ -113,7 +119,9 @@ def GetBlockD():
     Conv4 = VGGConv(Conv4, 512, 'DE3')
     Conv4 = VGGConv(Conv4, 512, 'DE4')
 
-    Map4 = VGGConv(layers.convolutional.Cropping2D(8)(Conv4), 512, 'DD4')
+    Approx = VGGConv(Conv4, 512, 'Approx_BLKD')
+
+    Map4 = VGGConv(layers.convolutional.Cropping2D(7)(Approx), 512, 'DD4')
     Map4 = VGGConv(Map4, 512, 'DD3')
     Map4 = VGGConv(Map4, 512, 'DD2')
     Map4 = VGGConv(Map4, 512, 'DD1', layers.convolutional.Cropping2D(12)(Conv4))
